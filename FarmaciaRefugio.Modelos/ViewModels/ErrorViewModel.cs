@@ -1,4 +1,4 @@
-namespace FarmaciaRefugio.Models
+namespace FarmaciaRefugio.Modelos.ViewModels
 {
     public class ErrorViewModel
     {
