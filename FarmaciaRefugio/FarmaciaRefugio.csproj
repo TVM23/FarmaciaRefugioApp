@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-FarmaciaRefugio-886ca758-47eb-4b60-9ea6-e4305480feeb</UserSecretsId>
   </PropertyGroup>
