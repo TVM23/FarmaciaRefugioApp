@@ -11,6 +11,7 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "numeroSerie" },
+            { "data": "nombre" },
             { "data": "descripcion" },
             { "data": "categoria.nombre" },
             { "data": "marca.nombre" },

@@ -1,6 +1,7 @@
 ﻿using FarmaciaRefugio.AccesoDatos.Data;
 using FarmaciaRefugio.AccesoDatos.Repositorio.IRepositorio;
 using FarmaciaRefugio.Modelos;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,5 +40,27 @@ namespace FarmaciaRefugio.AccesoDatos.Repositorio
                 _db.SaveChanges();
             }
         }
+
+        public IEnumerable<SelectListItem> ObtenerTodosDropDownList(string obj)
+        {
+            if (obj == "Categoria")
+            {
+                return _db.Categorias.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            if (obj == "Marca")
+            {
+                return _db.Marcas.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            return null;
+        }
+
     }
 }

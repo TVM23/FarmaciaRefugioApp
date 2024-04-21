@@ -1,5 +1,6 @@
 ﻿using FarmaciaRefugio.AccesoDatos.Repositorio.IRepositorio;
 using FarmaciaRefugio.Modelos;
+using FarmaciaRefugio.Modelos.ViewModels;
 using FarmaciaRefugio.Utilidades;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,28 @@ namespace FarmaciaRefugio.Areas.Admin.Controllers
         //Metodo Upsert GET
         public async Task<IActionResult> Upsert(int? id)
         {
-            return View();
+            ProductoVM productoVM = new ProductoVM()
+            {
+                Producto = new Producto(),
+                CategoriaLista = _unidadTrabajo.Producto.ObtenerTodosDropDownList("Categoria"),
+                MarcaLista = _unidadTrabajo.Producto.ObtenerTodosDropDownList("Marca")
+            };
+
+            if (id == null)
+            {
+                //Crear un producto nuevo
+                return View(productoVM);
+            }
+            else
+            {
+                //Actualizar un producto existente
+                productoVM.Producto = await _unidadTrabajo.Producto.Obtener(id.GetValueOrDefault());
+                if (productoVM.Producto == null)
+                {
+                    return NotFound();
+                }
+                return View(productoVM);
+            }
         }
 
         #region API
