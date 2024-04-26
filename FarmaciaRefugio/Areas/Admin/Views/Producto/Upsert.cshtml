@@ -88,6 +88,27 @@
                             <span asp-validation-for="Producto.MarcaId" class="text-danger"></span>
                         </div>
                     </div>
+                    <!-- Lista Padre -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Producto Padre</label>
+                            <select asp-for="Producto.PadreId" asp-items="@Model.PadreLista" class="form-select">
+                                <option disabled selected>-- Selcciona un producto padre --</option>
+                            </select>
+                            <span asp-validation-for="Producto.PadreId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!-- Lista Estado -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Estado</label>
+                            <select asp-for="Producto.Estado" class="form-select">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <!--  Botones -->
                     <br />
                     <div class="d-grid gap-2 d-md-block">
@@ -108,7 +129,7 @@
                 </div>
             </div>
             <!-- Mostrar Imagen  -->
-            <div class="col-g">
+            <div class="col-lg">
                 @if (Model.Producto.Id != 0)
                 {
                     <img src="@Ds.ImagenRuta@Model.Producto.ImagenUrl" width="100%" style="border-radius: 5px; border: 1px solid #bbb" />
